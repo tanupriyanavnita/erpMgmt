@@ -19,10 +19,10 @@ public class StudentController {
         return this.studentService.getAllStudents();
     }
 
-    @GetMapping("/students/{rollNo}")
-    public Student getStudentById(@PathVariable String rollNo)
+    @GetMapping("/students/{id}")
+    public Student getStudentById(@PathVariable String id)
     {
-        return this.studentService.getStudentById(Long.parseLong(rollNo));
+        return this.studentService.getStudentById(Long.parseLong(id));
     }
 
     @PostMapping("/students")
@@ -37,11 +37,11 @@ public class StudentController {
         return this.studentService.updateStudent(student);
     }
 
-    @DeleteMapping("/students/{rollNo}")
-    public ResponseEntity<HttpStatus> removeStudent(@PathVariable String rollNo)
+    @DeleteMapping("/students/{id}")
+    public ResponseEntity<HttpStatus> removeStudent(@PathVariable String id)
     {
         try {
-            this.studentService.removeStudent(Long.parseLong(rollNo));
+            this.studentService.removeStudent(Long.parseLong(id));
             return  new ResponseEntity<>(HttpStatus.OK);
         }
         catch(Exception e)

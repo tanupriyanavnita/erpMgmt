@@ -1,10 +1,8 @@
 package com.college.erpmgmt.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+
+import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
@@ -12,8 +10,8 @@ import java.io.Serializable;
 public class Student implements Serializable {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
-    public Long rollNo;
+    @GeneratedValue(strategy= GenerationType.AUTO)
+    private Long id;
     private String firstName;
     private String lastName;
     private String branch;
@@ -23,9 +21,8 @@ public class Student implements Serializable {
         super();
     }
 
-    public Student(Long rollNo, String firstName, String lastName, String branch, String address) {
+    public Student(String firstName, String lastName, String branch, String address) {
         super();
-        this.rollNo = rollNo;
         this.firstName = firstName;
         this.lastName = lastName;
         this.branch = branch;
@@ -34,12 +31,12 @@ public class Student implements Serializable {
 
 
 
-    public Long getRollNo() {
-        return rollNo;
+    public Long getid() {
+        return id;
     }
 
-    public void setRollNo(Long rollNo) {
-        this.rollNo = rollNo;
+    public void setid(Long id) {
+        this.id = id;
     }
 
     public String getFirstName() {
@@ -57,7 +54,7 @@ public class Student implements Serializable {
     @Override
     public String toString() {
         return "Student{" +
-                "rollNo=" + rollNo +
+                "id=" + id +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", branch='" + branch + '\'' +
